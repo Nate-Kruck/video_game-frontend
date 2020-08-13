@@ -13,7 +13,7 @@ export default class extends Component {
             <Switch>
               <Route
                 path="/"
-                exactrender={(routerProps) => <ListPage {...routerProps} />}
+                exact render={(routerProps) => <ListPage {...routerProps} />}
                 />
             </Switch>
         </Router>

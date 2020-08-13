@@ -9,7 +9,7 @@ export default class List extends Component {
         } = this.props
         return (
             <ul>
-                {data.map(game => <Games data={game} />)}
+                {data.map(game => <Games data={game} key={Math.random()*200} />)}
             </ul>
         )
     }

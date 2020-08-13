@@ -8,11 +8,11 @@ export default class Games extends Component {
         return (
             <li key={Math.random()*200} className="gameBlock">
                 <h1>{data.name}</h1>
-                <p>{data.image}</p>
+                <p><img className="image" src={data.image} alt={data.name} width="200px" /></p>
                 <p>Game Genre: {data.genre}</p>
                 <p>Price: {data.price}</p>
                 <p>Rating: {data.rating}</p>
-                <p>Mature: {data.mature}</p>
+                <p>Mature: {data.mature ? 'Yes' : 'No'}</p>
             </li>
         )
     }
