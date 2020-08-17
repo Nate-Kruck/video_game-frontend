@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { fetchGames } from '../API-Calls/games-api.js'
 
+
 const Emoji = props => (
     <span className = "emoji"
     role = "img"
@@ -13,10 +14,21 @@ const Emoji = props => (
 
 export default class DetailPage extends Component {
     state = {
-        games: {}
-    }
+        games: {},
+        isLoading: false,
+        name: '',
+        platform_id: '',
+        genre: '',
+        console: '',
+        rating: '',
+        price: '',
+        image: ''
+}
 
     componentDidMount = async () => {
+        this.state.isLoading = true;
+        
+
         const data = await fetchGames(this.props.match.params.id)
 
         this.setState({
@@ -26,8 +38,8 @@ export default class DetailPage extends Component {
 
     render() {
         return (
-        <div>
-            {this.state.games.name} cost {this.state.games.price}, has {this.state.game.rating}/5 < Emoji symbol ="⭐" /> rating.
+        <div className="gameBlock">
+            {this.state.games.name} cost {this.state.games.price}, has {this.state.games.rating}/5 <Emoji symbol ="⭐" /> rating.
         </div>
         )
     }

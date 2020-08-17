@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import {
+    Link
+} from 'react-router-dom'
 
 
 const Emoji = props => (
@@ -20,12 +23,14 @@ export default class Games extends Component {
             <div className = "gameBlock">
             <li key={Math.random()*200} className="productGrid">
                 <h3>{data.name}</h3>
-                <p><img className="image" src={data.image} alt={data.name} width="200px" /></p>
+                    <Link to={`/games/DetailPage/${data.id}`}> 
+                        <img className="image" src={data.image} alt={data.name} width="200px"/> 
+                    </Link>
                 <p>Game Genre: {data.genre}</p>
                 <p>Price: ${data.price}</p>
-                < p > Rating: {
+                <p> Rating: {
                     data.rating
-                } < Emoji symbol = "⭐" /></p>
+                } <Emoji symbol = "⭐" /></p>
                 <p>Mature: {data.mature ? 'Yes' : 'No'}</p>
             </li>
             </div>
