@@ -23,7 +23,7 @@ export default class Games extends Component {
             <div className = "gameBlock">
             <li key={Math.random()*200} className="productGrid">
                 <h3>{data.name}</h3>
-                    <Link to={`/games/DetailPage/${data.id}`}> 
+                    <Link to={`/detail/${data.id}`}> 
                         <img className="image" src={data.image} alt={data.name} width="200px"/> 
                     </Link>
                 <p>Game Genre: {data.genre}</p>

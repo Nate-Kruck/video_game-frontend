@@ -1,49 +1,54 @@
 import React, { Component } from 'react'
-import { createGame } from '../API-Calls/games-api.js'
+import { createGame, fetchGames } from '../API-Calls/games-api.js'
 import '../App.js'
 
 
 export default class CreateGameForm extends Component {
     state = {
         name: '',
-        platform_id: '',
         genre: '',
-        mature: '',
-        rating: '',
-        price: '',
-        image: ''
+        price: ''
+    }
+
+    componentDidMount = async () => {
+        const gameData = await fetchGames();
+
+        this.setState({
+            games: gameData.body
+        })
     }
 
     handleSubmit = async (e) => {
         e.preventDefault();
 
+        try {
         await createGame({
             name: this.state.name,
-            platform_id: this.state.platform,
             genre: this.state.genre,
             mature: this.state.mature,
             rating: this.state.rating,
             price: this.state.price,
         });
 
-
         this.setState({
             name: '',
-            platform_id: '',
             genre: '',
             mature: '',
             rating: '',
-            price: '',
-        })
+            price: 1
+        });
 
+    } catch(e) {
+        console.log(e.message)
     }
+}
 
     handleNameChange = e => {
         this.setState({ name: e.target.value });
     }
 
     handlePlatformChange = e => {
-        this.setState({ platform: e.target.value });
+        this.setState({ platform_id: e.target.value });
     }
 
     handleGenreChange = e => {
@@ -69,11 +74,11 @@ export default class CreateGameForm extends Component {
                 <form onSubmit={this.handleSubmit}>
                     <label>
                         Name:
-                        <input onChange={this.handleNameChange} value={this.state.name} />
+                        <input onChange={this.handleNameChange} type="text" value={this.state.name} />
                     </label>
                     <label>
                         Platform:
-                        <select onChange={this.handlePlatformChange} value={this.state.platform}>
+                        <select onChange={this.handlePlatformChange} value={this.state.platform_id}>
                             <option value="1">Xbox One</option>
                             <option value="2">PS4</option>
                             <option value="3">PC</option>
@@ -117,10 +122,10 @@ export default class CreateGameForm extends Component {
                             <option>$59.99</option>
                         </select>
                     </label>
-                    {
-                    (!this.state.name || !this.state.platform || !this.state.genre || !this.state.mature || !this.state.rating || !this.state.price) ? <button className="disabled">Add Game</button> : <button>Add Game</button>
-                    }
-                    {/* <button>Add Game</button> */}
+                    
+                    {/* (!this.state.name || !this.state.platform || !this.state.genre || !this.state.mature || !this.state.rating || !this.state.price) ? <button className="disabled">Add Game</button> : <button>Add Game</button>
+                    } */}
+                    <button>Add Game</button>
                 </form>
             </div>
         )
