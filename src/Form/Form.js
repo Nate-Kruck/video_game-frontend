@@ -7,7 +7,10 @@ export default class CreateGameForm extends Component {
     state = {
         name: '',
         genre: '',
-        price: ''
+        mature: true,
+        rating: 5,
+        price: 30,
+        
     }
 
     componentDidMount = async () => {
@@ -33,9 +36,9 @@ export default class CreateGameForm extends Component {
         this.setState({
             name: '',
             genre: '',
-            mature: '',
-            rating: '',
-            price: 1
+            mature: true,
+            rating: 5,
+            price: 30
         });
 
     } catch(e) {
@@ -47,9 +50,9 @@ export default class CreateGameForm extends Component {
         this.setState({ name: e.target.value });
     }
 
-    handlePlatformChange = e => {
-        this.setState({ platform_id: e.target.value });
-    }
+    // handlePlatformChange = e => {
+    //     this.setState({ platform_id: e.target.value });
+    // }
 
     handleGenreChange = e => {
         this.setState({ genre: e.target.value});
@@ -76,7 +79,7 @@ export default class CreateGameForm extends Component {
                         Name:
                         <input onChange={this.handleNameChange} type="text" value={this.state.name} />
                     </label>
-                    <label>
+                    {/* <label>
                         Platform:
                         <select onChange={this.handlePlatformChange} value={this.state.platform_id}>
                             <option value="1">Xbox One</option>
@@ -84,7 +87,7 @@ export default class CreateGameForm extends Component {
                             <option value="3">PC</option>
                             <option value="4">Nintendo</option>
                         </select>
-                    </label>
+                    </label> */}
                     <label>
                         Genre:
                         <select onChange={this.handleGenreChange} value={this.state.genre}>
@@ -116,10 +119,10 @@ export default class CreateGameForm extends Component {
                     <label>
                         Price:
                         <select onChange={this.handlePriceChange} value={this.state.price}>
-                            <option>$9.99</option>
-                            <option>$19.99</option>
-                            <option>$29.99</option>
-                            <option>$59.99</option>
+                            <option value="1">$9.99</option>
+                            <option value="2">$19.99</option>
+                            <option value="3">$29.99</option>
+                            <option value="4">$59.99</option>
                         </select>
                     </label>
                     
