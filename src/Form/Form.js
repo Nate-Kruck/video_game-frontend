@@ -6,6 +6,7 @@ import '../App.js'
 export default class CreateGameForm extends Component {
     state = {
         name: '',
+        platform_id: '',
         genre: '',
         mature: true,
         rating: 5,
@@ -25,16 +26,20 @@ export default class CreateGameForm extends Component {
         e.preventDefault();
 
         try {
-        await createGame({
+        const postData = await createGame({
             name: this.state.name,
+            platform_id: this.state.platform_id,
             genre: this.state.genre,
             mature: this.state.mature,
             rating: this.state.rating,
             price: this.state.price,
         });
+        console.log(postData)
 
         this.setState({
+            id: 1,
             name: '',
+            platform_id: '',
             genre: '',
             mature: true,
             rating: 5,
@@ -50,9 +55,9 @@ export default class CreateGameForm extends Component {
         this.setState({ name: e.target.value });
     }
 
-    // handlePlatformChange = e => {
-    //     this.setState({ platform_id: e.target.value });
-    // }
+    handlePlatformChange = e => {
+        this.setState({ platform_id: e.target.value });
+    }
 
     handleGenreChange = e => {
         this.setState({ genre: e.target.value});
@@ -79,15 +84,15 @@ export default class CreateGameForm extends Component {
                         Name:
                         <input onChange={this.handleNameChange} type="text" value={this.state.name} />
                     </label>
-                    {/* <label>
+                    <label>
                         Platform:
                         <select onChange={this.handlePlatformChange} value={this.state.platform_id}>
-                            <option value="1">Xbox One</option>
-                            <option value="2">PS4</option>
-                            <option value="3">PC</option>
-                            <option value="4">Nintendo</option>
+                            <option value='1'>Xbox One</option>
+                            <option value='2'>PS4</option>
+                            <option value='3'>PC</option>
+                            <option value='4'>Nintendo</option>
                         </select>
-                    </label> */}
+                    </label>
                     <label>
                         Genre:
                         <select onChange={this.handleGenreChange} value={this.state.genre}>
@@ -125,10 +130,10 @@ export default class CreateGameForm extends Component {
                             <option value="4">$59.99</option>
                         </select>
                     </label>
-                    
-                    {/* (!this.state.name || !this.state.platform || !this.state.genre || !this.state.mature || !this.state.rating || !this.state.price) ? <button className="disabled">Add Game</button> : <button>Add Game</button>
-                    } */}
-                    <button>Add Game</button>
+                    {
+                    (!this.state.name || !this.state.platform || !this.state.genre || !this.state.mature || !this.state.rating || !this.state.price) ? <button className='disabled'>Add Game</button> : <button>Add Game</button>
+                    }
+                    {/* <button>Add Game</button> */}
                 </form>
             </div>
         )

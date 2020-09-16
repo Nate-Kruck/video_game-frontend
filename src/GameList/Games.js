@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import {
     Link
 } from 'react-router-dom'
+// import Popover from 'react-bootstrap/Popover';
+
 
 
 const Emoji = props => (
@@ -14,16 +16,22 @@ const Emoji = props => (
         {props.symbol}
     </span>
 )
+
+
 export default class Games extends Component {
     render() {
+        
         const {
             data
         } = this.props
+        
+        
         return (
+            <>
             <div className = "gameBlock">
-            <li key={Math.random()*200} className="productGrid">
+            <li key={Math.random()} className="productGrid">
                 <h3>{data.name}</h3>
-                    <Link to={`/detail/${data.id}`}> 
+                    <Link to={`/detail/${data.id}`}>
                         <img className="image" src={data.image} alt={data.name} width="200px"/> 
                     </Link>
                 <p>Game Genre: {data.genre}</p>
@@ -35,6 +43,7 @@ export default class Games extends Component {
             </li>
             </div>
             
+            </>
         )
     }
 }

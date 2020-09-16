@@ -1,13 +1,13 @@
 import request from 'superagent';
 
-const URL = `http://localhost:7890`;
+const URL = `https://lab-08-backend.herokuapp.com`;
 
 export function fetchGames() {
     return request.get(`${URL}/games`);
 }
 
 export function fetchGame(id) {
-    return request.get(`${URL}/games/${id}`);
+    return request.get(`${URL}/detail/${id}`);
 }
 
 export function createGame(gameData) {
@@ -15,7 +15,7 @@ export function createGame(gameData) {
 }
 
 export function deleteGame(id) {
-    return request.delete(`${URL}/games/${id}`);
+    return request.delete(`${URL}/detail/${id}`);
 }
 
 export function updateGameList(id, updatedGameList) {

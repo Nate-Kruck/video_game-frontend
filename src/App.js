@@ -12,20 +12,26 @@ export default class extends Component {
       <div>
         <Router>
           <Header />
-          <div className="sidebar">
+          <div className='sidebar'>
             <Link to='/create'>Add Game</Link>
-            <Link to='/'>List</Link>
+            <Link to='/detail'>Game Detail</Link>
+            <Link to='/'>Game List</Link>
           </div>
             <Switch>
               <Route
-                path="/"
-                exact render={(routerProps) => <ListPage {...routerProps} />}
+                path='/'
+                exact 
+                render={(routerProps) => <ListPage {...routerProps} />}
                 />
               <Route
-                path="/create" exact render={(routerProps) => <CreateGameForm {...routerProps} />}
+                path='/create' 
+                exact 
+                render={(routerProps) => <CreateGameForm {...routerProps} />}
               />
               <Route
-                path="/detail/:id" exact render={(routerProps) => <DetailPage {...routerProps} />}
+                path='/detail/:id' 
+                exact 
+                render={(routerProps) => <DetailPage {...routerProps} />}
               />
             </Switch>
         </Router>
