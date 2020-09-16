@@ -1,32 +1,91 @@
-.App {
+@font-face {
+  font-family: 'MyFont';
+  src: url('./fonts/HexkeySolid-yw32d.otf')
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(236, 236, 236);
+}
+
+header {
   text-align: center;
+  /* filter: saturate(130%) contrast(25%) drop-shadow(0px 0px 3px #0e7a0d); */
+  font-family: 'MyFont', Fallback, sans-serif;
+  font-size: 40px;
+  text-shadow: 1px 0px 1px #CCCCCC,
+  0px 1px 1px #0e7a0d,
+  2px 1px 1px #CCCCCC,
+  1px 2px 1px #0e7a0d,
+  3px 2px 1px #CCCCCC,
+  2px 3px 1px #0e7a0d,
+  4px 3px 1px #CCCCCC,
+  3px 4px 1px #0e7a0d,
+  5px 4px 1px #CCCCCC,
+  4px 5px 1px #0e7a0d,
+  6px 5px 1px #CCCCCC,
+  5px 6px 1px #0e7a0d,
+  7px 6px 1px #CCCCCC;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+li {
+  list-style: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.gameBlock {
+  display: block;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding-right: 12px;
+  padding-left: 12px;
+  text-align: center;
+  margin: 0 auto;  
 }
 
-.App-link {
-  color: #61dafb;
+.gameBlock .image {
+  padding: 2.15rem 1.5rem .25rem;
+  filter: saturate(130%) contrast(115%) drop-shadow(0px 5px 5px black);
+  padding-bottom: 30px;
+  border-bottom: 3px outset black;
+  border-top: 3px inset black;
+  border-radius: 20px 20px 40px 40px;
 }
+
+/* .image:hover ~ .gameBlock {
+  filter: blur(10px);
+} */
+
+.image:hover {
+  transform: scale(1.3);
+  box-shadow: 0px 5px 1000px rgba(14,122,13,.9);
+  background: linear-gradient(to bottom, #0e7a0d 50%, black);
+}
+
+/* .image:hover {
+  transform: scale(1.5);
+  opacity: .6;
+  filter: hue-rotate(45deg)
+} */
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.sidebar a {
+  text-align: center;
+  margin: 0 0 0 30px;
+  font-size: 20px;
+}
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 
 @keyframes App-logo-spin {
   from {
